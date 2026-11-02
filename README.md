@@ -75,10 +75,10 @@ A small company with two floors needs a network where:
 |---|---|
 | Staff PC gets an IP via DHCP and reaches its gateway, the other floor and the printer | ✅ |
 | Staff and guest browse `www.example.com` (DNS + HTTP through PAT) | ✅ |
-| Guest pings a staff PC, a switch or the staff gateway | ❌ Blocked by ACL (16 deny matches) |
+| Guest pings a staff PC, a switch or the staff gateway | ✅ Blocked by ACL (16 deny matches) |
 | PC-ADMIN connects via SSH to R1-EDGE, SW1 and SW2 | ✅ |
-| Staff PC tries SSH to a network device | ❌ Connection refused |
-| PC-ADMIN tries to reach the internet | ❌ By design – MGMT is not translated |
+| Staff PC tries SSH to a network device | ✅ Connection refused |
+| PC-ADMIN tries to reach the internet | ✅ By design – MGMT is not translated |
 
 **PAT in action:** staff (192.168.10.21) and guest (192.168.30.21) share the public IP 203.0.113.2.
 UDP 53 = DNS lookups, TCP 80 = web traffic.
