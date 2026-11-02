@@ -69,8 +69,8 @@ The first leased address in every pool is .21, which confirms the exclusions (.1
 |---|---|---|
 | PC-ADMIN | `ping 192.168.99.11` / `.12` | ✅ |
 | PC-ADMIN | `ssh -l admin` to 192.168.99.1, .11, .12 | ✅ banner + login |
-| PC-STAFF1 | `ssh -l admin 192.168.10.1` | ❌ `% Connection refused by remote host` |
-| PC-STAFF1 | `ssh -l admin 192.168.30.1` | ❌ `% Connection refused by remote host` |
+| PC-STAFF1 | `ssh -l admin 192.168.10.1` | ✅ `% Connection refused by remote host` |
+| PC-STAFF1 | `ssh -l admin 192.168.30.1` | ✅ `% Connection refused by remote host` |
 
 `show ip ssh` – SSH enabled, version 2.0.
 `show login` – watching for login attacks: more than 3 failures in 60 s → logins disabled for 120 s.
