@@ -45,7 +45,7 @@ The first leased address in every pool is .21, which confirms the exclusions (.1
 
 `show ip nat translations` after browsing `www.example.com` from a staff PC and the guest laptop:
 
-![NAT translations](../images/nat-translations.png)
+![NAT translations](../NetworkImages/nat-translations.png)
 
 - UDP 53 entries = DNS, TCP 80 entries = HTTP
 - Staff (192.168.10.21) and guest (192.168.30.21) both appear as **203.0.113.2**, separated by port numbers
@@ -61,7 +61,7 @@ The first leased address in every pool is .21, which confirms the exclusions (.1
 | 50 | deny ip any 192.168.0.0/16 | 16 | Blocked guest access to staff, switch, staff gateway |
 | 60 | permit ip 192.168.30.0/24 any | 10 | Guest internet traffic |
 
-![Access lists](../images/access-lists.png)
+![Access lists](../NetworkImages/access-lists.png)
 
 ## 7. Management access
 
