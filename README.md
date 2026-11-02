@@ -137,7 +137,7 @@ Real problems found and fixed during the build:
 3. Set PC-STAFF1, PC-STAFF2 and LAPTOP-GUEST to DHCP; give PRINTER and PC-ADMIN their static IPs.
 4. On SRV-INTERNET, turn on DNS (A record `www.example.com` → `198.51.100.10`) and HTTP.
 5. Run the tests in the [Verification](small-office-network/docs/verification.md) section.
-6. > **Lab credentials (Packet Tracer file only):** username `admin` · password / enable secret `Lab2026`. These exist only in this simulation and are never used on real equipment. > Secrets are redacted in `configs/` as good practice for public repositories.
+6. > **Lab credentials (Packet Tracer file only):** username `admin` · password / enable secret `Lab2026`. These exist only in this simulation and are never used on real equipment. Secrets are redacted in `configs/` as good practice for public repositories.
 
 ## Future improvements
 
