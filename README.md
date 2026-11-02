@@ -130,19 +130,6 @@ Real problems found and fixed during the build:
 - **Lesson:** test one hop at a time, and verify that a change actually took effect.
 </details>
 
-## Repository structure
-
-```
-small-office-network/
-├── README.md
-├── configs/         running-configs of R1-EDGE, ISP, SW1, SW2 (passwords removed)
-├── docs/
-│   ├── ip-addressing-plan.md
-│   ├── verification.md
-│   └── troubleshooting.md
-└── packet-tracer/   small-office-network.pkt
-```
-
 ## How to reproduce
 
 1. Open `packet-tracer/small-office-network.pkt` in Cisco Packet Tracer 8.x, **or**
