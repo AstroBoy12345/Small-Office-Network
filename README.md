@@ -150,7 +150,7 @@ small-office-network/
 2. Build the topology from the [cabling table](small-office-network/docs/ip-addressing-plan.md) and paste the files from `configs/` into each device.
 3. Set PC-STAFF1, PC-STAFF2 and LAPTOP-GUEST to DHCP; give PRINTER and PC-ADMIN their static IPs.
 4. On SRV-INTERNET, turn on DNS (A record `www.example.com` → `198.51.100.10`) and HTTP.
-5. Run the tests in the [Verification](small-office-network/docs/verification) section.
+5. Run the tests in the [Verification](#verification) section.
 
 > **Note:** lab credentials have been removed from the configs. Set your own before use.
 
