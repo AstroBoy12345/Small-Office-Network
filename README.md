@@ -167,5 +167,5 @@ small-office-network/
 **Stergios Goukos** – IT / Networking, CCNA level.
 Looking for a junior network / IT support role.
 
-[![LinkedIn])
-[![Email]()
+[![LinkedIn](https://www.linkedin.com/in/stergios-goukos-848b56366/)
+[![Email](stergiosgouk@gmail.com)
