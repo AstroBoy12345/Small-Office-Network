@@ -129,3 +129,43 @@ Real problems found and fixed during the build:
 - **Fix:** corrected the IP and verified with `ipconfig`.
 - **Lesson:** test one hop at a time, and verify that a change actually took effect.
 </details>
+
+## Repository structure
+
+```
+small-office-network/
+├── README.md
+├── images/          topology and test screenshots
+├── configs/         running-configs of R1-EDGE, ISP, SW1, SW2 (passwords removed)
+├── docs/
+│   ├── ip-addressing-plan.md
+│   ├── verification.md
+│   └── troubleshooting.md
+└── packet-tracer/   small-office-network.pkt
+```
+
+## How to reproduce
+
+1. Open `packet-tracer/small-office-network.pkt` in Cisco Packet Tracer 8.x, **or**
+2. Build the topology from the [cabling table](docs/ip-addressing-plan.md) and paste the files from `configs/` into each device.
+3. Set PC-STAFF1, PC-STAFF2 and LAPTOP-GUEST to DHCP; give PRINTER and PC-ADMIN their static IPs.
+4. On SRV-INTERNET, turn on DNS (A record `www.example.com` → `198.51.100.10`) and HTTP.
+5. Run the tests in the [Verification](#verification) section.
+
+> **Note:** lab credentials have been removed from the configs. Set your own before use.
+
+## Future improvements
+
+- [ ] DHCP snooping and Dynamic ARP Inspection
+- [ ] Redundant uplinks with EtherChannel and HSRP
+- [ ] Syslog, NTP and SNMP monitoring
+- [ ] IPv6 dual-stack
+- [ ] Stateful firewall instead of stateless ACLs
+
+## About me
+
+**Stergios Goukos** – IT / Networking, CCNA level.
+Looking for a junior network / IT support role.
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/YOUR-PROFILE)
+[![Email](https://img.shields.io/badge/Email-Contact-D14836?logo=gmail&logoColor=white)](mailto:your.email@example.com)
