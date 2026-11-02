@@ -13,7 +13,7 @@ hostname R1-EDGE
 login block-for 120 attempts 3 within 60
 !
 !
-enable secret 5 $1$mERr$/sLaMmSud8LF2JNtjXBR71
+enable secret 5 <REDACTED>
 !
 !
 ip dhcp excluded-address 192.168.10.1 192.168.10.20
@@ -40,7 +40,7 @@ no ipv6 cef
 !
 !
 !
-username admin privilege 15 secret 5 $1$mERr$/sLaMmSud8LF2JNtjXBR71
+username admin privilege 15 secret 5 <REDACTED>
 !
 !
 license udi pid CISCO2911/K9 sn FTX15243BFL-
