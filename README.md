@@ -138,10 +138,8 @@ Real problems found and fixed during the build:
 4. On SRV-INTERNET, turn on DNS (A record `www.example.com` → `198.51.100.10`) and HTTP.
 5. Run the tests in the [Verification](small-office-network/docs/verification.md) section.
 6. > **Lab credentials (Packet Tracer file only):** username `admin` · password / enable secret `Lab-Pass-2026`
-> These exist only in this simulation and are never used on real equipment.
-> Secrets are redacted in `configs/` as good practice for public repositories.
-
-> **Note:** lab credentials have been removed from the configs. Set your own before use.
+   > These exist only in this simulation and are never used on real equipment.
+   > Secrets are redacted in `configs/` as good practice for public repositories.
 
 ## Future improvements
 
