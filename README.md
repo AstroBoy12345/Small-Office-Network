@@ -132,7 +132,7 @@ Real problems found and fixed during the build:
 
 ## How to reproduce
 
-1. Open `packet-tracer/small-office-network.pkt` in Cisco Packet Tracer 9.0.0, **or**
+1. Open `packet-tracer/small-office-network.pkt` in Cisco Packet Tracer 9.0.0.
 2. Build the topology from the [cabling table](small-office-network/docs/ip-addressing-plan.md) and paste the files from `configs/` into each device.
 3. Set PC-STAFF1, PC-STAFF2 and LAPTOP-GUEST to DHCP; give PRINTER and PC-ADMIN their static IPs.
 4. On SRV-INTERNET, turn on DNS (A record `www.example.com` → `198.51.100.10`) and HTTP.
