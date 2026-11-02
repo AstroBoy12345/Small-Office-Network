@@ -8,7 +8,7 @@ A secure two-floor small-office network, designed, configured and tested in Cisc
 It covers the core CCNA skills: **VLAN segmentation, trunking, inter-VLAN routing, DHCP, PAT,
 ACL-based guest isolation, Layer 2 security and SSH-only management.**
 
-![Topology](images/topology.png)
+![Topology](NetworkImages/topology.png)
 
 ## Scenario
 
