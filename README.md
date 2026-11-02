@@ -135,7 +135,6 @@ Real problems found and fixed during the build:
 ```
 small-office-network/
 ├── README.md
-├── images/          topology and test screenshots
 ├── configs/         running-configs of R1-EDGE, ISP, SW1, SW2 (passwords removed)
 ├── docs/
 │   ├── ip-addressing-plan.md
