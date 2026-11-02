@@ -56,3 +56,76 @@ A small company with two floors needs a network where:
 | – | WAN | 203.0.113.0/30 | 203.0.113.1 (ISP) | Static |
 
 ➡️ Full IP plan, switch port map and cabling: [docs/ip-addressing-plan.md](docs/ip-addressing-plan.md)
+
+## Design decisions
+
+| Decision | Why |
+|---|---|
+| **Router-on-a-stick** | One trunk link routes all VLANs – right-sized and cost-effective for a small office |
+| **VTP transparent** | Prevents a switch with a higher revision number from overwriting or deleting the VLANs |
+| **Native VLAN 999 (no users)** | Takes VLAN 1 off the trunks and blocks VLAN-hopping (double-tagging) attacks |
+| **Blackhole VLAN 666** | Unused ports are shut down *and* placed in a VLAN that isn't allowed on any trunk |
+| **MGMT excluded from NAT** | Network devices have no reason to reach the internet |
+| **Guest ACL inbound on G0/1.30** | Extended ACLs go as close to the source as possible, so unwanted traffic is dropped immediately |
+| **Different port-security modes** | `restrict` on staff ports (log, keep the port up) · `shutdown` on guest and admin ports (strict) |
+
+## Verification
+
+| Test | Result |
+|---|---|
+| Staff PC gets an IP via DHCP and reaches its gateway, the other floor and the printer | ✅ |
+| Staff and guest browse `www.example.com` (DNS + HTTP through PAT) | ✅ |
+| Guest pings a staff PC, a switch or the staff gateway | ❌ Blocked by ACL (16 deny matches) |
+| PC-ADMIN connects via SSH to R1-EDGE, SW1 and SW2 | ✅ |
+| Staff PC tries SSH to a network device | ❌ Connection refused |
+| PC-ADMIN tries to reach the internet | ❌ By design – MGMT is not translated |
+
+**PAT in action:** staff (192.168.10.21) and guest (192.168.30.21) share the public IP 203.0.113.2.
+UDP 53 = DNS lookups, TCP 80 = web traffic.
+
+![NAT translations](NetworkImages/nat-translations.png)
+
+**Guest isolation:** match counters on the ACL after testing.
+
+![Access lists](NetworkImages/access-lists.png)
+
+## Troubleshooting highlights
+
+Real problems found and fixed during the build:
+
+<details>
+<summary><b>1. Native VLAN mismatch while configuring trunks</b></summary>
+
+- **Symptom:** `%CDP-4-NATIVE_VLAN_MISMATCH` and Spanning Tree blocked the trunk port.
+- **Cause:** SW1 was already on native VLAN 999 while SW2 was still on VLAN 1.
+- **Fix:** set native VLAN 999 on SW2 → `%SPANTREE-2-UNBLOCK_CONSIST_PORT ... Port consistency restored`.
+- **Lesson:** both ends of a trunk must agree on the native VLAN.
+</details>
+
+<details>
+<summary><b>2. A port stayed in VLAN 1 after an interface range command</b></summary>
+
+- **Symptom:** `show vlan brief` still listed SW2 Gi0/2 under VLAN 1.
+- **Cause:** the combined `interface range` command was only partly applied.
+- **Fix:** configured Gi0/2 on its own.
+- **Lesson:** IOS applies what it understands and skips the rest – always verify with `show` commands.
+</details>
+
+<details>
+<summary><b>3. No internet – configuration pasted into the wrong router</b></summary>
+
+- **Symptom:** `ping 8.8.8.8` failed; `show ip route` on R1 had no default route and no WAN network.
+- **Cause:** the WAN, NAT and routing commands had been entered on the ISP router. R1's WAN interface was never configured, so the next hop was unreachable and the static default route was not installed (recursive lookup).
+- **Fix:** reset the ISP, reapplied the correct configs on both routers.
+- **Lesson:** check the prompt before pasting configuration.
+</details>
+
+<details>
+<summary><b>4. DNS and web failing – IP typo on the server</b></summary>
+
+- **Symptom:** `nslookup` timed out and the web page did not load.
+- **Diagnosis:** tested hop by hop; the first failure was ISP → server. The ISP interfaces were up/up, and `ipconfig` on the server showed **192**.51.100.10 instead of **198**.51.100.10.
+- **Extra catch:** the first correction did not apply – Packet Tracer only saves the field when focus leaves it.
+- **Fix:** corrected the IP and verified with `ipconfig`.
+- **Lesson:** test one hop at a time, and verify that a change actually took effect.
+</details>
