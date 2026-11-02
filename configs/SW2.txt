@@ -9,7 +9,7 @@ service password-encryption
 !
 hostname SW2
 !
-enable secret 5 $1$mERr$/sLaMmSud8LF2JNtjXBR71
+enable secret 5 <REDACTED>
 !
 !
 !
@@ -17,7 +17,7 @@ ip ssh version 2
 no ip domain-lookup
 ip domain-name office.lab
 !
-username admin secret 5 $1$mERr$/sLaMmSud8LF2JNtjXBR71
+username admin secret 5 <REDACTED>
 !
 vtp mode transparent
 !
